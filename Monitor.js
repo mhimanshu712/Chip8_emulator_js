@@ -50,7 +50,7 @@ class Monitor {
 
     test() {
         this.setPixel(0,0);
-        this.setPixel(30,10);
+        this.setPixel(30,33);
         this.paint();
     }
 }
