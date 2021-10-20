@@ -2,7 +2,7 @@ const MEMORY_SIZE = 4096;
 const NUM_REGISTERS = 16;
 
 class Chip {
-    constructor(monitor) {
+    constructor(display) {
         this.memory = new Uint8Array(MEMORY_SIZE);
         this.v = new Uint8Array(NUM_REGISTERS);
 
@@ -13,7 +13,7 @@ class Chip {
         this.delayTimer = 0;
         this.soundTimer = 0;
 
-        this.monitor = monitor;
+        this.display = display;
 
         this.paused = false;
         this.speed = 10;
@@ -70,7 +70,7 @@ class Chip {
         if(!this.paused)
             this.updateTimers();
 
-        this.monitor.paint();
+        this.display.render();
     }
 
     interpretInstruction(instruction) {
@@ -82,7 +82,7 @@ class Chip {
             case 0x0000:
                 switch(instruction) {
                     case 0x00E0:
-                        this.monitor.clear();
+                        this.display.clear();
                         break;
                      
                     case 0x0EE:
@@ -204,7 +204,7 @@ class Chip {
 
                     for(let col=0; col < width; col++) {
                         if( (sprite & 0x80) > 0) {
-                            if(this.monitor.setPixel(this.v[x] + col, this.v[y] + row))
+                            if(this.display.setPixel(this.v[x] + col, this.v[y] + row))
                                 this.v[0xF] = 1;
                         }
 

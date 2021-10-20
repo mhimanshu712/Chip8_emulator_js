@@ -1,8 +1,8 @@
-import Monitor from "./Monitor";
+import Display from "./Display";
 import Chip from "./Chip"
 
-const mon = new Monitor(document.getElementById('screen'));
-const chip = new Chip(mon);
+const display = new Display(document.getElementById('screen'), 15);
+const chip = new Chip(display);
 const fps = 60;
 
 let loop, fpsInterval, startTime, now, then, elapsed;
@@ -33,5 +33,5 @@ function loadROM(romName) {
         })
 }
 
-//mon.test();
-loadROM('logo.ch8')
+//display.test();
+loadROM('ibm.ch8')
