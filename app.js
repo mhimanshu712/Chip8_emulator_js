@@ -2,7 +2,7 @@ import Chip from "./Chip";
 import Display from "./Display";
 import Keyboard from "./Keyboard";
 
-let display = new Display(document.getElementById('screen'), 12);
+let display = new Display(document.getElementById('screen'), 10);
 let keyboard = new Keyboard();
 const chip = new Chip(display, keyboard);
 const fps = 60;

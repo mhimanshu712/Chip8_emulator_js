@@ -1,19 +1,23 @@
 body {
-  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  transform: perspective(300px) rotateX(5deg);
-
-  background: url("./images/bg.jpg");
-  background-size: cover;
+  background-color: black;
+  overflow: hidden;
 }
 
 #container {
+  background: url("./images/bg3.jpg");
+  background-size: cover;
+  width: 1000px;
+  height: 700px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #screen {
-  border-radius: 10px;
-  transform: translateY(-125px);
+  border-radius: 5px;
+  transform: perspective(300px) rotateX(5deg) translate(25px, -150px);
 }
