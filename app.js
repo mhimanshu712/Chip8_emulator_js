@@ -31,6 +31,7 @@ function loadROM(romName) {
             startTime = then;
             chip.loadSpritesIntoMemory();
             chip.loadProgramIntoMemory(program);
+            
             loop = requestAnimationFrame(step);
         })
 }
