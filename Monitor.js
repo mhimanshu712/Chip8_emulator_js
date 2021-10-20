@@ -29,7 +29,6 @@ class Monitor {
     }
 
     paint() {
-        console.log(this.display)
         this.canvasCtx.fillStyle = '#000'
         this.canvasCtx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         

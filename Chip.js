@@ -19,7 +19,7 @@ class Chip {
         this.speed = 10;
     }
 
-    loadSpritsIntoMemory() {
+    loadSpritesIntoMemory() {
         // Load default sprites 0-9 into the memory
 
         const sprites = [
@@ -66,6 +66,11 @@ class Chip {
                 this.interpretInstruction(opcode);
             }
         }
+
+        if(!this.paused)
+            this.updateTimers();
+
+        this.monitor.paint();
     }
 
     interpretInstruction(instruction) {
@@ -259,3 +264,5 @@ class Chip {
         }
     }
 }
+
+export default Chip;
