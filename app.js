@@ -2,8 +2,8 @@ import Chip from "./Chip";
 import Display from "./Display";
 import Keyboard from "./Keyboard";
 
-const display = new Display(document.getElementById('screen'), 15);
-const keyboard = new Keyboard();
+let display = new Display(document.getElementById('screen'), 10);
+let keyboard = new Keyboard();
 const chip = new Chip(display, keyboard);
 const fps = 60;
 
@@ -31,10 +31,9 @@ function loadROM(romName) {
             startTime = then;
             chip.loadSpritesIntoMemory();
             chip.loadProgramIntoMemory(program);
-            
+
             loop = requestAnimationFrame(step);
         })
 }
 
-//display.test();
-loadROM('ibm.ch8')
+loadROM('spaceInvaders.ch8')

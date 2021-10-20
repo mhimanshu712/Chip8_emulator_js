@@ -14,6 +14,7 @@ class Chip {
         this.soundTimer = 0;
 
         this.display = display;
+        this.keyboard = keyboard;
 
         this.paused = false;
         this.speed = 10;
