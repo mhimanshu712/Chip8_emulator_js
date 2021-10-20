@@ -2,7 +2,7 @@ const MEMORY_SIZE = 4096;
 const NUM_REGISTERS = 16;
 
 class Chip {
-    constructor(display) {
+    constructor(display, keyboard) {
         this.memory = new Uint8Array(MEMORY_SIZE);
         this.v = new Uint8Array(NUM_REGISTERS);
 

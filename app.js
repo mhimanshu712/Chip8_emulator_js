@@ -1,8 +1,10 @@
+import Chip from "./Chip";
 import Display from "./Display";
-import Chip from "./Chip"
+import Keyboard from "./Keyboard";
 
 const display = new Display(document.getElementById('screen'), 15);
-const chip = new Chip(display);
+const keyboard = new Keyboard();
+const chip = new Chip(display, keyboard);
 const fps = 60;
 
 let loop, fpsInterval, startTime, now, then, elapsed;
