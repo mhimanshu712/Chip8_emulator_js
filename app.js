@@ -1,10 +1,12 @@
 import Chip from "./Chip";
 import Display from "./Display";
 import Keyboard from "./Keyboard";
+import Buzzer from "./Buzzer";
 
-let display = new Display(document.getElementById('screen'), 10);
+let display = new Display(document.querySelector("#screen"), 10);
 let keyboard = new Keyboard();
-const chip = new Chip(display, keyboard);
+let buzzer = new Buzzer(440);
+let chip = new Chip(display, keyboard, buzzer);
 const fps = 60;
 
 let loop, fpsInterval, startTime, now, then, elapsed;

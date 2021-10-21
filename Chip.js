@@ -2,7 +2,7 @@ const MEMORY_SIZE = 4096;
 const NUM_REGISTERS = 16;
 
 class Chip {
-    constructor(display, keyboard) {
+    constructor(display, keyboard, buzzer) {
         this.memory = new Uint8Array(MEMORY_SIZE);
         this.v = new Uint8Array(NUM_REGISTERS);
 
@@ -15,6 +15,7 @@ class Chip {
 
         this.display = display;
         this.keyboard = keyboard;
+        this.buzzer = buzzer;
 
         this.paused = false;
         this.speed = 10;
@@ -60,6 +61,13 @@ class Chip {
             this.soundTimer -= 1;
     }
 
+    sound() {
+        if(this.soundTimer > 0)
+            this.buzzer.play();
+        else
+            this.buzzer.stop();
+    }
+
     cycle() {
         for(let i=0; i<this.speed; i++){
             if(!this.paused) {
@@ -70,6 +78,8 @@ class Chip {
 
         if(!this.paused)
             this.updateTimers();
+
+        this.sound();
 
         this.display.render();
     }
@@ -88,22 +98,20 @@ class Chip {
                      
                     case 0x00EE:
                         this.pc = this.stack.pop();
+                        break;
                 }
                 break;
 
             case 0x1000:
-                // JP addr
                 this.pc = (opcode & 0xFFF);
                 break;
 
             case 0x2000:
-                // Call addr
                 this.stack.push(this.pc);
                 this.pc = (opcode & 0xFFF);
                 break;
 
             case 0x3000:
-                // Skip Vx, byte
                 if(this.v[x] === (opcode & 0xFF))
                     this.pc += 2;
                 
@@ -117,20 +125,16 @@ class Chip {
                 break;
 
             case 0x5000:
-                //Skip if Vx == Vy
-
                 if(this.v[x] === this.v[y])
                     this.pc += 2;
                 
                 break;
 
             case 0x6000:
-                // Set Vx = kk
                 this.v[x] = (opcode & 0xFF);
                 break;
 
             case 0x7000:
-                // ADD Vx
                 this.v[x] += (opcode & 0xFF);
                 break;
 
@@ -141,15 +145,15 @@ class Chip {
                         break;
                     
                     case 0x1:
-                        this.v[x] = this.v[x] | this.v[y];
+                        this.v[x] |= this.v[y];
                         break;
 
                     case 0x2:
-                        this.v[x] = this.v[x] & this.v[y];
+                        this.v[x] &= this.v[y];
                         break;
 
                     case 0x3:
-                        this.v[x] = this.v[x] ^ this.v[y];
+                        this.v[x] ^= this.v[y];
                         break;
                     
                     case 0x4:
@@ -165,13 +169,13 @@ class Chip {
                         else
                             this.v[0xF] = 0;
 
-                        this.v[x] = this.v[x] - this.v[y];
+                        this.v[x] -= this.v[y];
                         break;
 
                     case 0x6:
                         this.v[0xF] = (this.v[x] & 0x1);
                         this.v[x] >>= 1;
-                    break;
+                        break;
 
                     case 0x7:
                         this.v[0xF] = 0;
@@ -256,6 +260,7 @@ class Chip {
                         break;
 
                     case 0x0A:
+                        this.paused = true;
                         this.keyboard.onNextKeyPress = function(key) {
                             this.v[x] = key;
                             this.paused = false;
@@ -297,7 +302,10 @@ class Chip {
                     default:
                         throw new Error('BAD OPCODE');
                 }
-            break;
+                break;
+
+            default:
+                throw new Error('Bad Opcode');
         }
     }
 }
