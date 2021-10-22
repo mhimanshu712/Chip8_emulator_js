@@ -13,13 +13,32 @@ body {
   height: 700px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 #screen {
   border-radius: 5px;
-  transform: perspective(300px) rotateX(7deg) translate(25px, -150px);
+  transform: perspective(300px) rotateX(7deg) translate(25px, -130px);
   /* box-shadow: 0px 20px 10px rgba(3, 6, 15, 0.5),
     0px 20px 30px rgba(4, 9, 36, 0.4), 0px 20px 20px rgba(23, 32, 83, 0.3); */
+}
+
+.button {
+  width: 50px;
+  transform-origin: 60% 60%;
+  /* transition: all 1s ease-in; */
+  user-select: none;
+}
+
+#options-button {
+  align-self: flex-end;
+  transform: translate(-120px, 10px);
+  opacity: 0.7;
+}
+
+#options-button:hover {
+  transform: translate(-120px, 10px) scale(1.2);
+  opacity: 0.9;
 }
