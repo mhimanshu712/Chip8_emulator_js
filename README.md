@@ -5,7 +5,7 @@
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-333333?style=flat&logo=javascript)
 
-An elegant looking Chip8 emulator, initially loads Space Invaders <br>
+An elegant looking Chip8 emulator written in vanilla javascript, initially loads Space Invaders <br>
 But custom ROM can be loaded, by clicking on the power button (RED) <br>
 
 ![](http://darkstars.coffeecup.com/files/invade.jpg)
