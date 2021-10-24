@@ -5,8 +5,8 @@
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
-  "devDependencies": {
-    "parcel": "latest"
+  "devDependencies": {},
+  "dependencies": {
+    "parcel-bundler": "^1.12.3"
   }
 }
-
