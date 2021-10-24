@@ -39,18 +39,6 @@ function loadProgram(program){
     loop = requestAnimationFrame(step);
 }
 
-// function loadROM(romName) {
-//     const url = `./roms/${romName}`;
-
-//     fetch(url).then(res => res.arrayBuffer())
-//         .then(buffer => {
-//             const program = new Uint8Array(buffer);
-//             loadProgram(program);
-//         })
-// }
-
-// loadROM('spaceInvaders.ch8');
-
 loadProgram(SpaceInvader)
 
 
@@ -64,7 +52,6 @@ canvas.addEventListener('click', (evt) => {
 })
 
 optionsButton.addEventListener('click', (evt) => {
-    // canvas.classList.toggle('big-canvas');
     fileInp.click();
 })
 

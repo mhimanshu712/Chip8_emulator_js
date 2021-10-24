@@ -21,8 +21,6 @@ body {
 .screen {
   border-radius: 5px;
   transform: perspective(300px) rotateX(7deg) translate(25px, -130px);
-  /* box-shadow: 0px 20px 10px rgba(3, 6, 15, 0.5),
-    0px 20px 30px rgba(4, 9, 36, 0.4), 0px 20px 20px rgba(23, 32, 83, 0.3); */
   transition: all 0.2s ease-in;
   z-index: 100;
 }
