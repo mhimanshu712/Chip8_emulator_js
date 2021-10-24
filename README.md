@@ -17,9 +17,9 @@ This project uses ParcelJs to bundel the files. To get started run<br>
 npm run start
 ```
 
-The Chip8 cpu instructions (36 instructions) have been implemented in the  **chip.js** file. <br>
+The Chip8 cpu instructions (36 instructions) have been implemented in the  **Chip.js** file. <br>
 It also implements memory and the registers. <br> <br>
-The file **spaceInvaders.js** contains the binary of the game stored in an Uint8Array. <br>
+The file **SpaceInvaders.js** contains the binary of the game stored in an Uint8Array. <br>
 Rest of the files handle keyboard, screen (64 x 32) and sound (basically an annoying buzzer).
 
 ## Key Mappings
