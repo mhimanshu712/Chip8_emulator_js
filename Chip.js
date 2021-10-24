@@ -84,6 +84,18 @@ class Chip {
         this.display.render();
     }
 
+    reset() {
+        this.memory = new Uint8Array(MEMORY_SIZE);
+        this.v = new Uint8Array(NUM_REGISTERS);
+
+        this.index = 0;
+        this.pc = 0x200;
+        this.stack = [];
+        this.sp = 0;
+        this.delayTimer = 0;
+        this.soundTimer = 0;
+    }
+
     interpretopcode(opcode) {
         this.pc += 2;
         const x = (opcode & 0x0F00) >> 8;
